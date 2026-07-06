@@ -1,21 +1,21 @@
 # Finding Unknowns Skill
 
-Finding Unknowns is a Codex skill for surfacing blind spots before implementation. It helps an agent separate cheap-to-resolve uncertainty from the few unknowns that can change architecture, invalidate results, or create expensive rework.
+Finding Unknowns is a Codex skill for surfacing blind spots so the user can clarify them before hard-to-reverse work. It helps an agent separate cheap-to-resolve uncertainty from the few unknowns that can change architecture, invalidate results, or create expensive rework.
 
-Use it when a user asks for a blind spot pass, unknown unknowns, assumption audit, risk review, pre-mortem, decision interview, or verification gap review. It is also useful when a task has high-impact ambiguity around schemas, authentication, money, migrations, deployment, external APIs, public claims, or irreversible product behavior.
+Use it when a user asks for a blind spot pass, unknown unknowns, assumption audit, risk review, pre-mortem, decision interview, clarification questions, or verification gap review. It is also useful when a task has high-impact ambiguity around schemas, authentication, money, migrations, deployment, external APIs, public claims, or irreversible product behavior.
 
 ## What It Teaches
 
-The skill gives agents a compact operating loop:
+The skill gives agents a compact user-facing loop:
 
 1. Frame the objective, change surface, cost of being wrong, and reversibility.
 2. Inspect local code, docs, tests, configs, and notes before asking questions.
 3. Track only decision-changing unknowns.
 4. Choose the smallest pass that fits the request.
-5. Ask the user only when evidence cannot answer a material hard-to-reverse decision.
+5. Present decision-changing unknowns as concrete questions or options the user can clarify.
 6. Map important claims to verification evidence.
 
-It is deliberately not a generic "ask more questions" skill. The quality bar is whether the pass changes what happens next.
+It is deliberately not a generic "ask more questions" skill. The quality bar is whether the pass makes the user newly aware of what needs clarification and changes what happens next.
 
 ## Included Files
 
@@ -49,7 +49,7 @@ After installation, start a new Codex session so the skill metadata is discovere
 ## Example Prompts
 
 ```text
-Use $finding-unknowns to do a blind spot pass on this auth refactor.
+Use $finding-unknowns to surface the unknowns in this auth refactor so I can clarify them.
 ```
 
 ```text
@@ -72,10 +72,10 @@ For an explicit blind spot pass, a good answer should include:
 - Known ground
 - Likely hidden constraints
 - Assumptions to verify
-- Questions that matter
+- Clarifications that matter
 - Recommended next step
 
-It should not produce a vague list like "there may be bugs and edge cases." Every item should connect to evidence, a decision, or a verification step.
+It should not produce a vague list like "there may be bugs and edge cases." Every item should connect to evidence, a decision, a clarification, or a verification step.
 
 ## Validation
 
@@ -95,10 +95,11 @@ The current package has been validated for:
 
 ## Design Principles
 
+- Make the user aware of unknowns they can clarify, defer, or accept as risk.
 - Prefer evidence over speculation.
 - Resolve cheap unknowns locally before asking the user.
 - Escalate only high-impact or hard-to-reverse ambiguity.
-- Do not stall when the user explicitly requests an audit pass.
+- Do not stall when the user explicitly requests an audit pass; produce the pass.
 - Use workspace-relative notes if a task needs an unknowns ledger.
 
 ## Repository Scope

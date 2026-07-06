@@ -1,4 +1,4 @@
 interface:
   display_name: "Finding Unknowns"
-  short_description: "Surface blind spots before implementation"
-  default_prompt: "Use $finding-unknowns to audit assumptions and blind spots before we implement this."
+  short_description: "Surface blind spots for clarification"
+  default_prompt: "Use $finding-unknowns to surface the unknowns and clarification questions before we commit to this."
